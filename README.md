@@ -14,10 +14,11 @@ And 100 minutes just sounds cooler than 75 😎
 
 ![demo](./docs/demo.gif)
 
-If you want to read the code, they are only 2 files to chek here:
+If you want to check the code, they are only few files to read there:
 
 - [App.js](./src/App.js)
 - [App.css](./src/App.css)
+- [retrieveOptions.js](./src/data/retrieveOptions.js)
 
 ## How to run 🛠️
 
