@@ -8,17 +8,17 @@ The result after 75 minutes you can see on the commit `7d0c3c3`.
 
 But I've decided to spend a bit more and finish the styling and implement the ability to select one of the options. So, all together the development took 100 minutes.
 
-And 100 minutes just sounds cooler than 75 😎
+And 100 minutes sounds cooler than 75 😎
 
 ## What I get 💡
 
 ![demo](./docs/demo.gif)
 
-If you want to check the code, they are only few files to read there:
+If you want to check the code, they are only few files to read:
 
 - [App.js](./src/App.js)
 - [App.css](./src/App.css)
-- [retrieveOptions.js](./src/data/retrieveOptions.js)
+- [retrieveOptions.js](./src/data/retrieveOptions.js) - this file imitates responses from API
 
 ## How to run 🛠️
 
