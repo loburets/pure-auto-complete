@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
 /**
  * Generated at https://www.json-generator.com/# as
@@ -14,44 +14,58 @@ import { useState, useEffect } from "react";
 import allPossibleOptions from './data/options.json';
 import './App.css';
 
-function App() {
-  const optionsLimit = 10
-  const [inputValue, setInputValue] = useState('')
-  const [options, setOptions] = useState([])
-  const handleInputChange = e => {
-    setInputValue(e.target.value)
-  }
+const optionsLimit = 10
 
-  useEffect(() => {
-    // todo Do something with the delayed response which can be returned later after previous autocompletes and replace this one
-    if (!inputValue) {
-      setOptions([])
-      return
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputValue: '',
+            options: [],
+        };
     }
 
-    // delay imitation
-    setTimeout(_ => {
-      const optionsToShow = allPossibleOptions
-          // todo replace by Regexp to be faster
-          .filter(option => option.name.toLowerCase().includes(inputValue.toLowerCase()))
-          .slice(0, optionsLimit)
+    handleInputChange = e => {
+        const inputValue = e.target.value
 
-      setOptions(optionsToShow)
-    }, 1000)
-  }, [inputValue]);
+        this.setState({inputValue})
+        this.setAutocompleteOptions(inputValue);
 
-  return (
-    <div>
-      <input value={inputValue} onChange={handleInputChange}/>
-      { !!options.length && options.map(option => {
+    }
+
+    setAutocompleteOptions = (inputValue) => {
+        // todo Do something with the delayed response which can be returned later - after previous autocompletes and replace this one
+        if (!inputValue) {
+            this.setState({options: []});
+        }
+
+        // delay imitation
+        setTimeout(_ => {
+            const optionsToShow = allPossibleOptions
+                // todo replace by Regexp to be faster
+                .filter(option => option.name.toLowerCase().includes(inputValue.toLowerCase()))
+                .slice(0, optionsLimit);
+
+            this.setState({options: optionsToShow});
+        }, 1000);
+    }
+
+    render() {
+        const {inputValue, options} = this.state
+
         return (
-          <div key={option.id}>
-            { option.name }
-          </div>
-        )
-      })}
-    </div>
-  );
+            <div>
+                <input value={inputValue} onChange={this.handleInputChange}/>
+                {!!options.length && options.map(option => {
+                    return (
+                        <div key={option.id}>
+                            {option.name}
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    }
 }
 
 export default App;
