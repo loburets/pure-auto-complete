@@ -14,6 +14,11 @@ And 100 minutes just sounds cooler than 75 😎
 
 ![demo](./docs/demo.gif)
 
+If you want to read the code, they are only 2 files to chek here:
+
+- [App.js](./src/App.js)
+- [App.css](./src/App.css)
+
 ## How to run 🛠️
 
 ```shell
