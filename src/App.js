@@ -17,7 +17,11 @@ class App extends React.Component {
 
         this.setState({inputValue})
         this.setAutocompleteOptions(inputValue);
+    }
 
+    handleOptionClick = (optionId, optionName) => {
+        this.setState({inputValue: optionName})
+        this.setState({options: []})
     }
 
     setAutocompleteOptions = async (inputValue) => {
@@ -40,14 +44,22 @@ class App extends React.Component {
 
         return (
             <div className="App">
-                <input value={inputValue} onChange={this.handleInputChange}/>
-                {!!options.length && options.map(option => {
-                    return (
-                        <div key={option.id}>
-                            {option.name}
+                <div className="search">
+                    <input value={inputValue} onChange={this.handleInputChange}/>
+                    <div className="minor-note">Done by Dmitry Loburets</div>
+                    {!!options.length &&
+                        <div className="autocomplete-options">
+                            {options.map(option => {
+                                return (
+                                    <div key={option.id} className="autocomplete-option"
+                                         onClick={_ => this.handleOptionClick(option.id, option.name)}>
+                                        {option.name}
+                                    </div>
+                                );
+                            })}
                         </div>
-                    );
-                })}
+                    }
+                </div>
             </div>
         );
     }
