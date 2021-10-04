@@ -23,12 +23,21 @@ function App() {
   }
 
   useEffect(() => {
-    const optionsToShow = allPossibleOptions
-        // todo replace by Regexp to be faster
-        .filter(option => option.name.toLowerCase().includes(inputValue.toLowerCase()))
-        .slice(0, optionsLimit)
+    // todo Do something with the delayed response which can be returned later after previous autocompletes and replace this one
+    if (!inputValue) {
+      setOptions([])
+      return
+    }
 
-    setOptions(optionsToShow)
+    // delay imitation
+    setTimeout(_ => {
+      const optionsToShow = allPossibleOptions
+          // todo replace by Regexp to be faster
+          .filter(option => option.name.toLowerCase().includes(inputValue.toLowerCase()))
+          .slice(0, optionsLimit)
+
+      setOptions(optionsToShow)
+    }, 1000)
   }, [inputValue]);
 
   return (
@@ -36,7 +45,7 @@ function App() {
       <input value={inputValue} onChange={handleInputChange}/>
       { !!options.length && options.map(option => {
         return (
-          <div>
+          <div key={option.id}>
             { option.name }
           </div>
         )
