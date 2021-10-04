@@ -27,6 +27,6 @@ Oh, a lot, they are just 100 minutes!
 1. Add debounce: not create new requests while the user just typing
 2. Care about a11y, especially navigation through the elements using keyboard arrows
 3. Split code from App.js to be in a separate component
-4. It is better to use the functional components nowadays, it was just part of the task to use classes
+4. It is better to use the functional components nowadays. But it was just part of the task to use the classes
 5. Add tests using `@testing-library/react`
 6. Styling is a very basic one, it is better to use something like styled-components or jss
