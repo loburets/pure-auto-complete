@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+import { useState, useEffect } from "react";
+
+/**
+ * Generated at https://www.json-generator.com/# as
+ *
+ *  [
+ *    '{{repeat(1000, 1000)}}',
+ *    {
+ *       id: '{{objectId()}}',
+ *       name: '{{company()}} {{company()}}'
+ *    }
+ *  ]
+ */
+import allPossibleOptions from './data/options.json';
 import './App.css';
 
 function App() {
+  const optionsLimit = 10
+  const [inputValue, setInputValue] = useState('')
+  const [options, setOptions] = useState([])
+  const handleInputChange = e => {
+    setInputValue(e.target.value)
+  }
+
+  useEffect(() => {
+    const optionsToShow = allPossibleOptions
+        // todo replace by Regexp to be faster
+        .filter(option => option.name.toLowerCase().includes(inputValue.toLowerCase()))
+        .slice(0, optionsLimit)
+
+    setOptions(optionsToShow)
+  }, [inputValue]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input value={inputValue} onChange={handleInputChange}/>
+      { !!options.length && options.map(option => {
+        return (
+          <div>
+            { option.name }
+          </div>
+        )
+      })}
     </div>
   );
 }
