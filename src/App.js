@@ -27,12 +27,13 @@ class App extends React.Component {
     setAutocompleteOptions = async (inputValue) => {
         if (!inputValue) {
             this.setState({options: []});
+            return
         }
 
         const options = await retrieveOptions(inputValue);
 
         // The input value had been changed since the request was created
-        if (this.state.inputValue !== inputValue || inputValue === '') {
+        if (this.state.inputValue !== inputValue) {
             return
         }
 
