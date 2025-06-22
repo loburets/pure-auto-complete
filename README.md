@@ -4,7 +4,7 @@ This is a challenge to test how much I can do within 100 minutes.
 
 The task was to make the autocomplete using only pure react installation without any other libraries.
 
-Of course, without LLMs. They even hadn't been used yet at 2021 when this repo was creteated.
+Naturally, no LLMs involved — they weren’t even in use back in 2021 when this repo was created.
 
 ## What I get 💡
 
